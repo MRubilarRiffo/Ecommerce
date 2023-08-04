@@ -1,0 +1,7 @@
+#root {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	width: 100vw;
+	/* padding: 2rem; */
+}

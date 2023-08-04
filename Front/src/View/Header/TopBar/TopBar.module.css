@@ -1,0 +1,11 @@
+#container_topbar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+    background-color: #DA3F3F;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+}
