@@ -5,9 +5,31 @@ const { conn } = require('./src/db');
 const PORT = 3001;
 
 conn.sync({ force: true })
-    .then(() => {
-        server.listen(PORT, () => {
-            console.log(`Server listening on port ${PORT}`);
+    .then(async () => {
+        const response = await axios.get('http://localhost:5000/hombre');
+
+        const productData = response.data.map(product => {
+            return {
+                name: product.name,
+                sku: product.id,
+                image: product.view_list.filter(c => !c.image_url.includes('video')).map(c => c.image_url),
+                brand: product.attribute_list.brand,
+                color: product.attribute_list.color,
+                gender: product.attribute_list.gender,
+                sport: product.attribute_list.sport,
+                category: product.attribute_list.category,
+                on_model_measurement: product.attribute_list.on_model_measurement || null,
+                currentPrice: product.pricing_information.currentPrice,
+                standard_price: product.pricing_information.standard_price,
+                discount: Math.round(100 - (product.pricing_information.currentPrice * 100 / product.pricing_information.standard_price)),
+                variation_list: product.variation_list,
+                slug: `${product.name.toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036f\s]/g, "")}/${product.id}`
+            };
         });
+
+        await conn.models.Product.bulkCreate(productData);        
+    })
+    .then(() => {
+        server.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
     })
     .catch(error => console.log(error));

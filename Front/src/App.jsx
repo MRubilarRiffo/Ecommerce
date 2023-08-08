@@ -1,11 +1,13 @@
 import './App.css';
-import { NavBar } from './View/Header/NavBar/NavBar';
+import "react-multi-carousel/lib/styles.css";
+import { NavBar } from './Containers/NavBar/NavBar';
+import { Home } from './Containers/Home/Home';
 
 function App() {
 	return (
 		<>
 			<NavBar />
-			<h3>hola</h3>
+			<Home />
 		</>
 	);
 };

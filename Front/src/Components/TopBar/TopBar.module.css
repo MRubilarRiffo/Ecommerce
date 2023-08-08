@@ -1,0 +1,10 @@
+#TopBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: #ca1111;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+}

@@ -1,0 +1,41 @@
+#container_notification {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: #CA1111;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 270px;
+    height: 100px;
+    position: fixed;
+    z-index: 2000;
+    bottom: 30px;
+    left: 30px;
+    overflow: hidden;
+}
+
+#container_img {
+    background-color: #ECEFF0;
+    width: 100px;
+}
+
+#container_img img {
+    width: 100px;
+}
+
+#container_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#container_text p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    font-size: 14px;
+}

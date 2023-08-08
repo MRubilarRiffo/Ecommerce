@@ -1,0 +1,6 @@
+#Home {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    margin-bottom: 90px;
+}

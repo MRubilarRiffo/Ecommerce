@@ -1,16 +1,25 @@
-const initialState = {
+import { GET_PRODUCTS_RANDOM, NEWS_PRODUCTS } from './actions-type';
 
+const initialState = {
+    products_random: [],
+    news_products: []
 };
 
 const reducer = (state = initialState, action) => {
-    // switch (key) {
-    //     case value:
-            
-    //         break;
-    
-    //     default:
-    //         break;
-    // };
+    switch (action.type) {
+        case GET_PRODUCTS_RANDOM:
+            return {
+                ...state,
+                products_random: action.payload
+            };
+        case NEWS_PRODUCTS:
+            return {
+                ...state,
+                news_products: action.payload
+            };
+        default:
+            return state;
+    };
 };
 
 export { reducer };
