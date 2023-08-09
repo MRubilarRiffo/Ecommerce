@@ -1,7 +1,36 @@
-#logo {
+#container_logo {
     height: 50px;
 }
 
-#logo img {
+#container_logo img {
     height: 100%;
+    cursor: pointer;
 }
+
+#logo_mobil {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #logo {
+        display: none;
+    }
+
+    #logo_mobil {
+        display: block;
+    }
+
+    #container_logo {
+        height: 60px;
+    }
+}
+
+/* @media (max-width: 480px) {
+    .svg-container {
+        width: 200px;
+        height: auto;
+    }
+} */
+
+
+

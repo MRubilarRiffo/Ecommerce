@@ -13,7 +13,6 @@ const Products_Random = () => {
 	}, []);
 	
 	const products = useSelector(state => state.products_random);
-	// const products = [];
 
 	return (
 		<div>

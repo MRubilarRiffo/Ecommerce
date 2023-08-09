@@ -1,0 +1,9 @@
+#container_icon {
+    display: flex;
+    gap: 10px;
+}
+
+#container_icon svg {
+    cursor: pointer;
+    font-size: 30px;
+}

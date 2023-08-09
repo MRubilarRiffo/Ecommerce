@@ -29,6 +29,13 @@
     position: relative;
 }
 
+.favorites {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #CA1111;
+}
+
 .container_img .normal_image {
     display: block;
 }

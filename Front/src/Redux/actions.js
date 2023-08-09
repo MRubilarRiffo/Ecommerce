@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_PRODUCTS_RANDOM, NEWS_PRODUCTS } from './actions-type';
+import { GET_PRODUCTS_RANDOM, NEWS_PRODUCTS, ALL_PRODUCTS } from './actions-type';
 
 export const getProductsRandom = () => {
     return async function (dispatch) {
@@ -17,6 +17,17 @@ export const getNewsProducts = () => {
         try {
             const response = await axios.get(`http://localhost:3001/products/news-products`);
             return dispatch({ type: NEWS_PRODUCTS, payload: response.data });
+        } catch (error) {
+            console.log(error.response.data);
+        };
+    };
+};
+
+export const getAllProducts = (search) => {
+    return async function (dispatch) {
+        try {
+            const response = await axios.get(`http://localhost:3001/products?name=${search}`);
+            return dispatch({ type: ALL_PRODUCTS, payload: response.data });
         } catch (error) {
             console.log(error.response.data);
         };

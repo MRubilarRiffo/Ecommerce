@@ -2,12 +2,17 @@ import './App.css';
 import "react-multi-carousel/lib/styles.css";
 import { NavBar } from './Containers/NavBar/NavBar';
 import { Home } from './Containers/Home/Home';
+import { Route, Routes } from 'react-router-dom';
+import { All_Products } from './Components/All Products/All Products';
 
 function App() {
 	return (
 		<>
 			<NavBar />
-			<Home />
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/productos' element={<All_Products />} /> 
+			</Routes>
 		</>
 	);
 };
