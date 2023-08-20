@@ -1,10 +1,10 @@
-const { getgetProductsByName } = require('../../handlers/products_handlers');
+const { getProductsByName } = require('../../handlers/products_handlers');
 
 const getProductsByName_Controllers = async (req, res) => {
     try {
         const { name } = req.query;
 
-        const products = await getgetProductsByName(name);
+        const products = await getProductsByName(name);
 
         products.error
             ? res.status(400).send(products.error)

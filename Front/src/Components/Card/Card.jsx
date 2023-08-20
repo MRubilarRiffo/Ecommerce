@@ -8,7 +8,7 @@ import { IoHeartOutline } from 'react-icons/io5';
 const Card = ({ props }) => {
     return (
         <div className={styles.card}>
-			<Link to={`/products/${props.slug}`}>
+			<Link to={`/productos/${props.slug}`}>
 				
 				<div className={styles.container_img}>
 					<div className={styles.favorites}>

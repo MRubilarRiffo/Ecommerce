@@ -1,27 +1,38 @@
-import { GET_PRODUCTS_RANDOM, NEWS_PRODUCTS, ALL_PRODUCTS } from './actions-type';
+import * as actionTypes from './actions-type';
 
 const initialState = {
     products_random: [],
     news_products: [],
-    all_products: []
+    all_products: [],
+    details: [],
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_PRODUCTS_RANDOM:
+        case actionTypes.GET_PRODUCTS_RANDOM:
             return {
                 ...state,
                 products_random: action.payload
             };
-        case NEWS_PRODUCTS:
+        case actionTypes.NEWS_PRODUCTS:
             return {
                 ...state,
                 news_products: action.payload
             };
-        case ALL_PRODUCTS:
+        case actionTypes.ALL_PRODUCTS:
             return {
                 ...state,
                 all_products: action.payload
+            };
+        case actionTypes.GET_DETAILS:
+            return {
+                ...state,
+                details: action.payload
+            };
+        case actionTypes.RESET_DETAILS:
+            return {
+                ...state,
+                details: []
             };
         default:
             return state;

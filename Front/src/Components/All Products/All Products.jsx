@@ -1,19 +1,10 @@
 import styles from './All Products.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Card } from '../Card/Card';
 import { Loading } from '../Loading/Loading';
 
 const All_Products = () => {
-    const dispatch = useDispatch();
-
     const products = useSelector(state => state.all_products);
-
-    console.log(products);
-
-    // useEffect(() => {
-    //     dispatch
-    // }, []);
 
     return (
         <div>

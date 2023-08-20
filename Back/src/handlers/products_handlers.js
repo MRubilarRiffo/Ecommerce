@@ -20,7 +20,7 @@ exports.getProductsRandom = async () => {
 
         return products;
     } catch (error) {
-        throw error;
+        throw new Error('Error al obtener productos');
     };
 };
 
@@ -43,11 +43,11 @@ exports.getNewsProducts = async () => {
 
         return products;
     } catch (error) {
-        throw error;
+        throw new Error('Error al obtener productos');
     };
 };
 
-exports.getgetProductsByName = async (name) => {
+exports.getProductsByName = async (name) => {
     try {
         const products = await Product.findAll({
             where: { name: { [Op.iLike]: `%${name}%` } },
@@ -65,6 +65,19 @@ exports.getgetProductsByName = async (name) => {
 
         return products;
     } catch (error) {
-        throw error;
+        throw new Error('Error al obtener productos por NAME');
+    };
+};
+
+exports.getProductsBySku = async (sku) => {
+    try {
+        console.log(sku);
+        const products = await Product.findAll({
+            where: { sku }
+        });
+
+        return products;
+    } catch (error) {
+        throw new Error('Error al obtener productos por SKU');
     };
 };

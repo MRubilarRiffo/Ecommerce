@@ -17,6 +17,12 @@ const SearchBar = ({ setSearchOn }) => {
        setSearch(value);
     };
 
+    const handleKeyPress = ({ key }) => {
+		if (key === "Enter") {
+			handleSubmit();
+		};
+	};
+
     const handleSubmit = () => {
         if (search !== '') {
             setSearchOn(false)
@@ -59,6 +65,7 @@ const SearchBar = ({ setSearchOn }) => {
                         id={styles.input_SearchBar}
                         type="text"
                         onChange={handleChange}
+                        onKeyPress={handleKeyPress}
                         placeholder='Buscar Productos...'
                         value={search}
                     />

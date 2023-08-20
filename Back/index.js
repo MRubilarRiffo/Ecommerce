@@ -23,7 +23,7 @@ conn.sync({ force: true })
                 standard_price: product.pricing_information.standard_price,
                 discount: Math.round(100 - (product.pricing_information.currentPrice * 100 / product.pricing_information.standard_price)),
                 variation_list: product.variation_list,
-                slug: `${product.name.toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036f\s]/g, "")}/${product.id}`
+                slug: `${product.name.trim().toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036f\s]/g, "").replace(/\//g, "-")}/${product.id}`
             };
         });
 
