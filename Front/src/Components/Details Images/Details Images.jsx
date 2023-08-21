@@ -9,7 +9,7 @@ const Details_Images = () => {
     const [imageToShow, setImageToShow] = useState(4);
 
     const handleShowMore = () => {
-        setImageToShow(prev => prev + 2);
+        setImageToShow(prev => prev + 4);
     };
 
     const handleShowLess = () => {
@@ -17,25 +17,29 @@ const Details_Images = () => {
     };
 
     return (
-        <div id={styles.images}>
-            {
-                image?.slice(0, imageToShow).map((img, index) =>
-                    <img
-                        key={`image-${index}`}
-                        src={img}
-                        alt=""
-                        loading="lazy"
-                        className={styles.responsive_img}
-                    />
-                )
-            }
-            {   
-                image?.length > 4 && (
-                    imageToShow < image?.length 
-                        ? <button onClick={handleShowMore}>MOSTRAR MÁS v</button>
-                        : <button onClick={handleShowLess}>MOSTRAR MENOS ^</button>
-                )
-            }
+        <div className={styles.container}>
+            <div id={styles.images}>
+                {
+                    image?.slice(0, imageToShow).map((img, index) =>
+                        <img
+                            key={`image-${index}`}
+                            src={img}
+                            alt=""
+                            loading="lazy"
+                            className={styles.responsive_img}
+                        />
+                    )
+                }
+            </div>
+            <div>
+                {   
+                    image?.length > 4 && (
+                        imageToShow < image?.length 
+                            ? <button onClick={handleShowMore}>MOSTRAR MÁS v</button>
+                            : <button onClick={handleShowLess}>MOSTRAR MENOS ^</button>
+                    )
+                }
+            </div>
         </div>
     );
 };

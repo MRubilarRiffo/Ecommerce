@@ -1,8 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 450px);
+}
+
 #images {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: calc(100% - 350px);
 }
 
 .responsive_img {
@@ -18,6 +23,10 @@
 }
 
 @media (max-width: 800px) {
+    .container {
+        width: 100%;
+    }
+
     #images {
         width: 100%;
     }

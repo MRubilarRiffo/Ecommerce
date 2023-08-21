@@ -5,66 +5,31 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../../Redux/actions';
 import { Loading } from '../../Components/Loading/Loading';
-import { formatPrice } from '../../Functions/formatPrice';
 import { Details_Images } from '../../Components/Details Images/Details Images';
+import { Details_Props } from '../../Components/Details Props/Details Props';
 
 const Details = () => {
     const dispatch = useDispatch();
     const { sku } = useParams();
 
+    const product = useSelector(state => state.details[0]);
+    
     useEffect(() => {
         dispatch(getDetails(sku));
         return () => dispatch({ type: RESET_DETAILS });
-    }, [])
-
-    const product = useSelector(state => state.details[0]);
+    }, [sku])
 
     // brand, category, color, createdAt, currentPrice, 
     // discount, gender, id, image, name, 
     // on_model_measurement, sku, slug, sport, 
     // standard_price, variation_list
 
-    const gender = {
-        'M': 'Hombre',
-        'w': 'Mujer',
-        'U': 'Unisex'
-    };
-
     if (!product) return <Loading />;
-
-    const price = () => {
-        if (product?.discount > 0) {
-            return (
-                <>
-                    <span className={styles.standard_price} >
-                        {formatPrice(product?.standard_price)}
-                    </span>
-                    &nbsp;
-                    <span className={styles.offer_price} >
-                        {formatPrice(product?.currentPrice)}
-                    </span>
-                </>
-            );
-        };
-        return <span className={styles.price} >{formatPrice(product?.currentPrice)}</span>;
-    };
-
-
+    
     return (
         <div id={styles.Details}>
             <Details_Images />
-            
-            <div id={styles.props}>
-                <div>
-                    {`${gender[product?.gender]} • ${product?.sport.join(' • ')}`}
-                </div>
-                <div>
-                    {product?.name}
-                </div>
-                <div>
-                    {price()}
-                </div>
-            </div>
+            <Details_Props />
         </div>
     );
 };
