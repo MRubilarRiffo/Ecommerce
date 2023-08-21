@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../../Redux/actions';
-import { Loading } from '../Loading/Loading';
+import { Loading } from '../../Components/Loading/Loading';
 import { formatPrice } from '../../Functions/formatPrice';
+import { Details_Images } from '../../Components/Details Images/Details Images';
 
 const Details = () => {
     const dispatch = useDispatch();
@@ -50,19 +51,9 @@ const Details = () => {
 
 
     return (
-        <div id={styles.Details}>            
-            <div id={styles.images}>
-                {
-                    product?.image?.map((img, index) =>
-                        <img
-                            key={`image-${index}`}
-                            src={img} alt=""
-                            loading="lazy"
-                            id={styles.responsive_img}
-                        />
-                    )
-                }
-            </div>
+        <div id={styles.Details}>
+            <Details_Images />
+            
             <div id={styles.props}>
                 <div>
                     {`${gender[product?.gender]} • ${product?.sport.join(' • ')}`}

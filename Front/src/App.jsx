@@ -4,7 +4,7 @@ import { NavBar } from './Containers/NavBar/NavBar';
 import { Home } from './Containers/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import { All_Products } from './Components/All Products/All Products';
-import { Details } from './Components/Details/Details';
+import { Details } from './Containers/Details/Details';
 
 function App() {
 	return (

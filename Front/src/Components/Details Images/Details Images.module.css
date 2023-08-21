@@ -1,0 +1,28 @@
+#images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: calc(100% - 350px);
+}
+
+.responsive_img {
+    max-width: 50%;
+}
+
+.img_none {
+    display: none;
+}
+
+.img_block {
+    display: block;
+}
+
+@media (max-width: 800px) {
+    #images {
+        width: 100%;
+    }
+
+    .responsive_img {
+        max-width: 100%;
+    }
+}

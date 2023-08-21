@@ -3,12 +3,6 @@
     position: relative;
 }
 
-#images {
-    display: flex;
-    flex-wrap: wrap;
-    width: calc(100% - 350px);
-}
-
 #props {
     display: flex;
     flex-direction: column;
@@ -16,10 +10,6 @@
     text-align: left;
     /* position: fixed; */
     right: 0;
-}
-
-#responsive_img {
-    max-width: 50%;
 }
 
 .standard_price {
@@ -40,15 +30,7 @@
         flex-direction: column;
     }
 
-    #images {
-        width: 100%;
-    }
-
     #props {
         width: 100%;
-    }
-
-    #responsive_img {
-        max-width: 100%;
     }
 }
