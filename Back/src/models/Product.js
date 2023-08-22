@@ -46,10 +46,7 @@ module.exports = (sequelize) => {
     },
     discount: {
       type: DataTypes.INTEGER,
-    },
-    variation_list: {
-      type: DataTypes.ARRAY(DataTypes.JSON),
-    },
+    }
   }, {
     timestamps: true,
   });

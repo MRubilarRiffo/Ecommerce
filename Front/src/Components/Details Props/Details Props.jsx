@@ -1,14 +1,23 @@
 import styles from './Details Props.module.css';
 import { useSelector } from 'react-redux';
 import { formatPrice } from '../../Functions/formatPrice';
+import { useState } from 'react';
 
 const Details_Props = () => {
     const product = useSelector(state => state.details[0]);
+    const stock = useSelector(state => state.stock_details);
 
     const gender = {
         'M': 'Hombre',
         'w': 'Mujer',
         'U': 'Unisex'
+    };
+
+    const [ countQuantity, setCountQuantity ] = useState({});
+
+    const handleClick = ({ size, quantity }) => {
+        console.log(quantity);
+        setCountQuantity({ size, quantity })
     };
 
     const price = () => {
@@ -44,7 +53,33 @@ const Details_Props = () => {
                 {price()}
             </div>
             <div>
-                Tallas
+                Tallas:
+                <div className={styles.stock}>
+                    {
+                        stock.map((c, index) => (
+                            <button
+                                className={
+                                    c.quantity === 0
+                                        ? styles.disabled_button
+                                        : countQuantity.size === c.size
+                                            ? styles.button_focus
+                                            : styles.button_no_focus
+                                }
+                                type='button'
+                                key={`stock-${index}`}
+                                onClick={() => handleClick(c)}
+                            >
+                                <span >{c.size}</span>
+                            </button>
+                        ))
+                    }
+                </div>
+                <div>
+                    {
+                        countQuantity.quantity < 6 &&
+                            <p>{`Solo quedan ${countQuantity.quantity} en nuestros almacenes`}</p>
+                    }
+                </div>
             </div>
         </div>
     );

@@ -9,7 +9,8 @@ const Notification = () => {
         "Camila", "Antonela", "Martina", "Victoria", "María"
     ];
 
-    const { news_products, products_random } = useSelector(state => state);
+    const news_products = useSelector(state => state.news_products);
+    const products_random = useSelector(state => state.products_random);
 
     const products = [news_products, products_random].flat();
 
@@ -39,7 +40,7 @@ const Notification = () => {
         return name;
     };
 
-    const productsShow = products[generateRandomNumber(0, products.length)];
+    const productsShow = products[generateRandomNumber(0, products.length - 1)];
 
     return showNotification && productsShow && (
         <div id={styles.container_notification} >
@@ -47,7 +48,7 @@ const Notification = () => {
                 <img src={productsShow?.image_standar} alt="" />
             </div>
             <div id={styles.container_text}>
-                <p>{names[generateRandomNumber(0, names.length)]} compró <br/> {truncateName(productsShow?.name, 30)}</p>
+                <p>{names[generateRandomNumber(0, names.length - 1)]} compró <br/> {truncateName(productsShow?.name, 30)}</p>
                 <p>Hace {generateRandomNumber(2, 50)} minutos.</p>
             </div>
         </div>

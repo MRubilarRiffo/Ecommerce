@@ -5,6 +5,7 @@ const initialState = {
     news_products: [],
     all_products: [],
     details: [],
+    stock_details: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,6 +34,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 details: []
+            };
+        case actionTypes.GET_STOCK_DETAILS:
+            return {
+                ...state,
+                stock_details: action.payload
+            };
+        case actionTypes.RESET_STOCK_DETAILS:
+            return {
+                ...state,
+                stock_details: []
             };
         default:
             return state;

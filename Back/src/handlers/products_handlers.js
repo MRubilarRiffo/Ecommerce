@@ -71,7 +71,6 @@ exports.getProductsByName = async (name) => {
 
 exports.getProductsBySku = async (sku) => {
     try {
-        console.log(sku);
         const products = await Product.findAll({
             where: { sku }
         });
