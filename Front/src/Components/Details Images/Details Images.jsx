@@ -13,6 +13,7 @@ const Details_Images = () => {
     };
 
     const handleShowLess = () => {
+        window.scrollTo(0, 0);
         setImageToShow(4);
     };
 

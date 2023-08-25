@@ -1,6 +1,7 @@
 #Details {
     display: flex;
-    position: relative;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 @media (max-width: 800px) {

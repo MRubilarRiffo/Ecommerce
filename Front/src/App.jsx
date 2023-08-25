@@ -5,6 +5,7 @@ import { Home } from './Containers/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import { All_Products } from './Components/All Products/All Products';
 import { Details } from './Containers/Details/Details';
+import { Footer } from './Components/Footer/Footer';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				<Route path='/productos' element={<All_Products />} />
 				<Route path='/productos/:slug/:sku' element={<Details />} />
 			</Routes>
+			<Footer />
 		</>
 	);
 };

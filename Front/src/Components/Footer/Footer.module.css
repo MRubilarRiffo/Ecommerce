@@ -1,0 +1,155 @@
+.todo{
+   display: flex;
+   flex-direction: column;
+   background-color:#ca1111;
+   border-top: ridge 1px rgb(160, 160, 160);
+   align-items: center;
+   color: white;
+}
+
+.derechos{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: 13px;
+   border-top: solid 1px gray;
+   background-color: black;
+   width: 100%;
+}
+
+.derechos svg {
+   color: #ca1111
+}
+
+#container_elements {
+   display: flex;
+   flex-wrap: nowrap;
+   margin-left: 20px;
+   margin-right: 20px;
+   margin-top: 90px;
+   margin-bottom: 90px;
+   gap: 20px;
+}
+
+.div_elements {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: flex-start;
+   width: 25%;
+}
+
+.div_elements svg {
+   font-size: 40px;
+}
+
+.ico {
+   display: flex;
+}
+
+.text {
+   display: flex;
+   flex-direction: column;
+   margin-left: 20px;
+   margin-right: 20px;
+   height: 100%;
+}
+
+.text h3 {
+   margin-left: 0px;
+   text-align: left;
+   font-weight: bold;
+}
+
+.div_elements span {
+   display: flex;
+   justify-content: flex-start;
+   text-align: left;
+}
+
+#useful_links {
+   display: flex;
+   padding-top: 50px;
+   padding-bottom: 50px;
+   gap: 50px;
+   justify-content: flex-end;
+   background-color: black;
+   width: 100%;
+}
+
+#useful_links h3 {
+   margin-left: 0px;
+   text-align: left;
+   font-weight: bold;
+}
+
+#useful_links h4 {
+   text-align: left;
+   padding-right: 50px;
+}
+
+#useful_links a {
+   display: flex;
+   text-align: left;
+   color: rgba(255, 255, 255, 0.87);
+   flex-direction: row;
+   align-items: center;
+   flex-wrap: nowrap;
+   gap: 10px;
+}
+
+.useful_links_div {
+   display: flex;
+   flex-direction: column;
+   width: 40%;
+}
+
+.container_links {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+}
+
+.container_links svg {
+   width: 16px;
+}
+
+@media (max-width: 950px) {
+   #container_elements {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .div_elements {
+      width: 40%;
+   }
+}
+
+@media (max-width: 767px) {
+   #container_elements {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .div_elements {
+      width: 200px;
+   }
+
+   .text span {
+      display: none;
+   }
+
+   #useful_links h4 {
+      padding-right: 0px;
+   }
+
+   .useful_links_div {
+      width: 45%;
+   }
+
+   #useful_links {
+      gap: 10px;
+   }
+}

@@ -2,6 +2,7 @@ import styles from './Details Props.module.css';
 import { useSelector } from 'react-redux';
 import { formatPrice } from '../../Functions/formatPrice';
 import { useState } from 'react';
+import { AiOutlineHeart } from 'react-icons/ai';
 
 const Details_Props = () => {
     const product = useSelector(state => state.details[0]);
@@ -9,15 +10,20 @@ const Details_Props = () => {
 
     const gender = {
         'M': 'Hombre',
-        'w': 'Mujer',
+        'W': 'Mujer',
         'U': 'Unisex'
     };
 
     const [ countQuantity, setCountQuantity ] = useState({});
 
     const handleClick = ({ size, quantity }) => {
-        console.log(quantity);
         setCountQuantity({ size, quantity })
+    };
+
+    const handleAddToCart = () => {
+        if (typeof countQuantity === 'string') return
+        if (Object.keys(countQuantity).length === 0) setCountQuantity('Por favor, selecciona tu talla');
+        
     };
 
     const price = () => {
@@ -46,8 +52,8 @@ const Details_Props = () => {
             <div>
                 {`${gender[product?.gender]} • ${product?.sport.join(' • ')}`}
             </div>
-            <div>
-                {product?.name}
+            <div className={styles.name}>
+                <span>{product?.name.toUpperCase()}</span>
             </div>
             <div>
                 {price()}
@@ -76,9 +82,26 @@ const Details_Props = () => {
                 </div>
                 <div>
                     {
-                        countQuantity.quantity < 6 &&
-                            <p>{`Solo quedan ${countQuantity.quantity} en nuestros almacenes`}</p>
+                        typeof countQuantity === 'string'
+                            ? <p>{countQuantity}</p>
+                            : countQuantity.quantity < 6 &&
+                                <p>{`Solo quedan ${countQuantity.quantity} en nuestros almacenes`}</p>
                     }
+                </div>
+            </div>
+            <div className={styles.container_add_to_cart_x_fav}>
+                <div className={styles.add_to_cart}>
+                    <button
+                        type='button'
+                        onClick={handleAddToCart}
+                    >
+                        <span>AÑADIR AL CARRITO</span>
+                    </button>
+                </div>
+                <div className={styles.fav}>
+                    <button type='button'>
+                        <span><AiOutlineHeart /></span>
+                    </button>
                 </div>
             </div>
         </div>

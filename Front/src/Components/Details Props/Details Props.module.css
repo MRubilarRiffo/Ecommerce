@@ -3,10 +3,8 @@
     flex-direction: column;
     padding: 20px 20px 0px 20px;
     text-align: left;
-    /* position: fixed; */
-    /* right: 0; */
     width: 450px;
-
+    gap: 10px;
 }
 
 .standard_price {
@@ -60,8 +58,56 @@
     cursor: not-allowed;
 }
 
+.name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container_add_to_cart_x_fav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.add_to_cart {
+    width: 200px;
+    height: 50px;
+    font-weight: bold;
+}
+
+.add_to_cart button {
+    width: 100%;
+    height: 100%;
+}
+
+.fav button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 100%;
+    color: black;
+    font-size: 25px;
+    background-color: transparent;
+    border: none;
+}
+
+.fav button:hover {
+    font-size: 30px;
+    transition: font-size 0.3s;
+}
+
 @media (max-width: 800px) {
     #props {
-        width: 100%;
+        width: calc(100% - 40px);
+        padding: 20px 20px 0px 20px;
+    }
+
+    .name {
+        font-size: 24px;
+    }
+
+    .stock {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 0.1fr));
     }
 }

@@ -15,20 +15,25 @@ const Details = () => {
     const product = useSelector(state => state.details[0]);
     
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(getDetails(sku));
         dispatch(getStockDetails(sku));
         return () => {
             dispatch({ type: RESET_DETAILS });
             dispatch({ type: RESET_STOCK_DETAILS });
         };
-    }, [sku])
-
-    if (!product) return <Loading />;
+    }, [])
     
     return (
         <div id={styles.Details}>
-            <Details_Images />
-            <Details_Props />
+            {
+                !product
+                    ? <Loading />
+                    : <>
+                        <Details_Images />
+                        <Details_Props />
+                    </>
+            }
         </div>
     );
 };
