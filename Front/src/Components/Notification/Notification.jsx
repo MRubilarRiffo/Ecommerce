@@ -12,7 +12,7 @@ const Notification = () => {
     const news_products = useSelector(state => state.news_products);
     const products_random = useSelector(state => state.products_random);
 
-    const products = [news_products, products_random].flat();
+    const products = [news_products?.data, products_random?.data].flat();
 
     const [showNotification, setShowNotification] = useState(false);
 

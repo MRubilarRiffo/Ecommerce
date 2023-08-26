@@ -1,28 +1,12 @@
-const { Op } = require('sequelize');
 const { Product } = require('../../db');
+const { whereClause } = require('../../helpers/whereClause');
 
-async function getTotalProducts(filters) {
+const getTotalProducts = async (filters) => {
     try {
-        const whereClause = {};
-
-        if (filters.name) {
-            whereClause.name = {
-                [Op.iLike]: `%${filters.name}%`
-            };
-        };
-
-        if (filters.sport && Array.isArray(filters.sport) && filters.sport.length > 0) {
-            whereClause.sport = {
-                [Op.in]: filters.sport
-            };
-        };
-
-        if (filters.gender) {
-            whereClause.gender = filters.gender;
-        };
+        const where = await whereClause(filters);
 
         const totalProducts = await Product.count({
-            where: whereClause,
+            where: where,
         });
 
         return totalProducts;

@@ -1,18 +1,26 @@
 const { getProducts_H } = require('../../handlers/products/getProducts_H');
 const { getTotalProducts } = require('../../handlers/products/getTotalProducts_H');
 
-const getProducts_C = async (req, res) => {
+const getProducts_C = async (req, res, next) => {
     try {
         const productsPerPage = 10;
         const currentPage = req.query.page || 1;
         const filters = {
             name: req.query.name,
             sport: req.query.sport,
-            gender: req.query.gender
+            gender: req.query.gender,
+            brand: req.query.brand,
+            category: req.query.category,
+            discount: req.query.discount
         };
+
         const sortOrder = req.query.sortOrder || 'asc';
 
-        const products = await getProducts_H(currentPage, productsPerPage, filters, sortOrder);
+        const selectedFields = req.query.fields ? req.query.fields.split(',') : null;
+
+        const random = req.query.random || false;
+
+        const products = await getProducts_H(currentPage, productsPerPage, filters, sortOrder, selectedFields, random);
         
         if (products.error) {
             res.status(400).send(products.error);
@@ -32,7 +40,8 @@ const getProducts_C = async (req, res) => {
             res.json(response);
         };
     } catch (error) {
-        res.status(500).json({ error: 'Error al obtener productos' });
+        next(error)
+        // res.status(500).json({ error: 'Error al obtener productos' });
     };
 };
 

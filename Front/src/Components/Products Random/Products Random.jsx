@@ -18,9 +18,9 @@ const Products_Random = () => {
 		<div>
 			<h2>PUEDE QUE TE GUSTEN</h2>
 			{
-				products.length > 0
+				products?.data?.length > 0
 					? <div className={styles.container_card}>
-						{products.map((props, index) => <Card key={index} props={props} />)}
+						{products?.data?.map((props, index) => <Card key={index} props={props} />)}
 					</div>
 					: <Loading />
 			}

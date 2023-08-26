@@ -5,7 +5,9 @@ import * as actionTypes from './actions-type';
 export const getProductsRandom = () => {
     return async function (dispatch) {
         try {
-            const response = await axios.get(`http://localhost:3001/products/products-random`);
+            const sortOrder = 'random';
+            const fields = 'slug,name,brand,discount,currentPrice,standard_price,image_standar,image_hover';
+            const response = await axios.get(`http://localhost:3001/products?sortOrder=${sortOrder}&fields=${fields}`);
             return dispatch({ type: actionTypes.GET_PRODUCTS_RANDOM, payload: response.data });
         } catch (error) {
             console.log(error.response.data);
@@ -16,7 +18,9 @@ export const getProductsRandom = () => {
 export const getNewsProducts = () => {
     return async function (dispatch) {
         try {
-            const response = await axios.get(`http://localhost:3001/products/news-products`);
+            const sortOrder = 'desc';
+            const fields = 'slug,name,brand,discount,currentPrice,standard_price,image_standar,image_hover';
+            const response = await axios.get(`http://localhost:3001/products?sortOrder=${sortOrder}&fields=${fields}`);
             return dispatch({ type: actionTypes.NEWS_PRODUCTS, payload: response.data });
         } catch (error) {
             console.log(error.response.data);
@@ -27,7 +31,8 @@ export const getNewsProducts = () => {
 export const getAllProducts = (search) => {
     return async function (dispatch) {
         try {
-            const response = await axios.get(`http://localhost:3001/products?name=${search}`);
+            const fields = 'slug,name,brand,discount,currentPrice,standard_price,image_standar,image_hover';
+            const response = await axios.get(`http://localhost:3001/products?name=${search}&fields=${fields}`);
             return dispatch({ type: actionTypes.ALL_PRODUCTS, payload: response.data });
         } catch (error) {
             console.log(error.response.data);

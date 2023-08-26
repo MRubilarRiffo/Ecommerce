@@ -18,11 +18,11 @@ const Products_News = () => {
         <div>
             <h2>NOVEDADES</h2>
             {
-                products.length > 0
-                ? <div className={styles.container_card}>
-                    {products.map((props, index) => <Card key={index} props={props} />)}
-                </div>
-                : <Loading />
+                products?.data?.length > 0
+                    ? <div className={styles.container_card}>
+                        {products?.data?.map((props, index) => <Card key={index} props={props} />)}
+                    </div>
+                    : <Loading />
             }
         </div>
     );

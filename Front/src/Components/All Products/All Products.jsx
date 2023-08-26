@@ -5,13 +5,13 @@ import { Loading } from '../Loading/Loading';
 
 const All_Products = () => {
     const products = useSelector(state => state.all_products);
-
+    console.log(products?.data);
     return (
         <div>
             Productos
             {
-                products.length > 0
-                    ? products.map(props => <Card props={props} />)
+                products?.data?.length > 0
+                    ? products.data.map(props => <Card props={props} />)
                     : <Loading />
             }
         </div>
